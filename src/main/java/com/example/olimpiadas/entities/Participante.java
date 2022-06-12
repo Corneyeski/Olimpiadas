@@ -31,11 +31,6 @@ public class Participante extends Personal {
         this.nacimiento = nacimiento;
         this.puntuacion = puntuacion;
     }
-
-    public Participante(RegisterDto registerDto){
-        super(registerDto.getNombre(), registerDto.getApellidos(), registerDto.getDni(), registerDto.getPassword());
-        this.nacimiento = registerDto.getNacimiento();
-    }
     public Participante() {}
 
     public void setId(Long id) {

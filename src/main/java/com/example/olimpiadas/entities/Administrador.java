@@ -29,10 +29,6 @@ public class Administrador extends Personal {
         this.fechaBaja = fechaBaja;
     }
 
-    public Administrador(RegisterDto registerDto){
-        super(registerDto.getNombre(), registerDto.getApellidos(), registerDto.getDni(), registerDto.getPassword());
-    }
-
     public Administrador() {
 
     }

@@ -27,10 +27,6 @@ public class Periodista extends Personal {
         this.id = id;
         this.empresa = empresa;
     }
-    public Periodista(RegisterDto registerDto){
-        super(registerDto.getNombre(), registerDto.getApellidos(), registerDto.getDni(), registerDto.getPassword());
-        this.empresa = registerDto.getEmpresa();
-    }
 
     public Periodista() {}
 

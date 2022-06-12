@@ -22,11 +22,6 @@ public class Juez extends Personal {
         this.numeroJuez = numeroJuez;
     }
 
-    public Juez(Long id, Long numeroJuez) {
-        this.id = id;
-        this.numeroJuez = numeroJuez;
-    }
-
     public Juez(RegisterDto registerDto){
         super(registerDto.getNombre(), registerDto.getApellidos(), registerDto.getDni(), registerDto.getPassword());
         this.numeroJuez = registerDto.getNumeroJuez();
