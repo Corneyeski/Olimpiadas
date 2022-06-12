@@ -1,7 +1,11 @@
 package com.example.olimpiadas.service.impl;
 
+import com.example.olimpiadas.dto.ParticipanteDto;
+import com.example.olimpiadas.dto.PuntuarDto;
 import com.example.olimpiadas.dto.RegistroDto;
+import com.example.olimpiadas.entities.Participante;
 import com.example.olimpiadas.exceptions.InvalidTypeException;
+import com.example.olimpiadas.exceptions.ResourceNotFoundException;
 import com.example.olimpiadas.mapper.PersonalMapper;
 import com.example.olimpiadas.repository.AdministradorRepository;
 import com.example.olimpiadas.repository.JuezRepository;
@@ -48,6 +52,17 @@ public class PersonalServiceImpl implements PersonalService {
             }
             default -> throw new InvalidTypeException();
         }
+    }
+
+    @Override
+    public ParticipanteDto scoreParticipante(Long juezId, PuntuarDto puntuarDto) throws ResourceNotFoundException {
+
+        juezRepository.findById(juezId).orElseThrow(ResourceNotFoundException::new);
+
+        Participante participante = participanteRepository.findById(puntuarDto.getParticipanteId()).orElseThrow(ResourceNotFoundException::new);
+        participante.setPuntuacion(puntuarDto.getPuntuacion());
+
+        return mapper.participanteToParticipanteDto(participanteRepository.save(participante));
     }
 
     private Long createEntityJuez(RegistroDto registroDto){
