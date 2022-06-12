@@ -1,7 +1,10 @@
 package com.example.olimpiadas.mapper;
 
-import com.example.olimpiadas.dto.RegisterDto;
+import com.example.olimpiadas.dto.RegistroDto;
+import com.example.olimpiadas.entities.Administrador;
 import com.example.olimpiadas.entities.Juez;
+import com.example.olimpiadas.entities.Participante;
+import com.example.olimpiadas.entities.Periodista;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -9,6 +12,9 @@ import org.mapstruct.factory.Mappers;
 public interface PersonalMapper {
 
     PersonalMapper INSTANCE = Mappers.getMapper( PersonalMapper.class );
-    Juez registerDtoToJuez(RegisterDto registerDto);
+    Juez registerDtoToJuez(RegistroDto registroDto);
+    Administrador registerDtoToAdministrador(RegistroDto registroDto);
+    Participante registerDtoToParticipante(RegistroDto registroDto);
+    Periodista registerDtoToPeriodista(RegistroDto registroDto);
 
 }

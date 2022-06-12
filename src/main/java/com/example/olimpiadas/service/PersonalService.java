@@ -1,8 +1,9 @@
 package com.example.olimpiadas.service;
 
-import com.example.olimpiadas.dto.RegisterDto;
+import com.example.olimpiadas.dto.RegistroDto;
+import com.example.olimpiadas.exceptions.InvalidTypeException;
 
 public interface PersonalService {
 
-    void registerPersonal(RegisterDto registerDto);
+    Long registerPersonal(RegistroDto registroDto) throws InvalidTypeException;
 }

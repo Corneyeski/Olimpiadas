@@ -1,8 +1,8 @@
 package com.example.olimpiadas.entities;
 
-import com.example.olimpiadas.dto.RegisterDto;
-
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDate;
 
@@ -38,6 +38,7 @@ public class Administrador extends Personal {
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }

@@ -1,8 +1,10 @@
 package com.example.olimpiadas.entities;
 
-import com.example.olimpiadas.dto.RegisterDto;
+import com.example.olimpiadas.dto.RegistroDto;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
@@ -22,9 +24,9 @@ public class Juez extends Personal {
         this.numeroJuez = numeroJuez;
     }
 
-    public Juez(RegisterDto registerDto){
-        super(registerDto.getNombre(), registerDto.getApellidos(), registerDto.getDni(), registerDto.getPassword());
-        this.numeroJuez = registerDto.getNumeroJuez();
+    public Juez(RegistroDto registroDto){
+        super(registroDto.getNombre(), registroDto.getApellidos(), registroDto.getDni(), registroDto.getPassword());
+        this.numeroJuez = registroDto.getNumeroJuez();
     }
 
     public Juez() {}
@@ -34,6 +36,7 @@ public class Juez extends Personal {
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }

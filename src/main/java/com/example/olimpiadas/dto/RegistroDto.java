@@ -2,7 +2,7 @@ package com.example.olimpiadas.dto;
 
 import java.time.LocalDate;
 
-public class RegisterDto {
+public class RegistroDto {
     private String nombre;
     private String apellidos;
     private String dni;
@@ -13,7 +13,7 @@ public class RegisterDto {
     private LocalDate nacimiento;
     private int puntuacion;
 
-    public RegisterDto(String nombre, String apellidos, String dni, String password, TypePersonal type, Long numeroJuez, String empresa, LocalDate nacimiento, int puntuacion) {
+    public RegistroDto(String nombre, String apellidos, String dni, String password, TypePersonal type, Long numeroJuez, String empresa, LocalDate nacimiento, int puntuacion) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.dni = dni;
@@ -26,7 +26,7 @@ public class RegisterDto {
     }
 
     //Constructor para @Entity Juez
-    public RegisterDto(String nombre, String apellidos, String dni, String password, TypePersonal type, Long numeroJuez) {
+    public RegistroDto(String nombre, String apellidos, String dni, String password, TypePersonal type, Long numeroJuez) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.dni = dni;
@@ -36,7 +36,7 @@ public class RegisterDto {
     }
 
     //Constructor para @Entity Periodista
-    public RegisterDto(String nombre, String apellidos, String dni, String password, TypePersonal type, String empresa) {
+    public RegistroDto(String nombre, String apellidos, String dni, String password, TypePersonal type, String empresa) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.dni = dni;
@@ -46,7 +46,7 @@ public class RegisterDto {
     }
 
     //Constructor para @Entity Participante
-    public RegisterDto(String nombre, String apellidos, String dni, String password, TypePersonal type, LocalDate nacimiento, int puntuacion) {
+    public RegistroDto(String nombre, String apellidos, String dni, String password, TypePersonal type, LocalDate nacimiento, int puntuacion) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.dni = dni;
@@ -57,7 +57,7 @@ public class RegisterDto {
     }
 
     //Constructor para @Entity Administrador
-    public RegisterDto(String nombre, String apellidos, String dni, String password, TypePersonal type) {
+    public RegistroDto(String nombre, String apellidos, String dni, String password, TypePersonal type) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.dni = dni;
@@ -65,7 +65,7 @@ public class RegisterDto {
         this.type = type;
     }
 
-    public RegisterDto() {}
+    public RegistroDto() {}
 
     public String getNombre() {
         return nombre;

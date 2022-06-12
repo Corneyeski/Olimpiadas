@@ -1,7 +1,7 @@
 package com.example.olimpiadas.service.impl;
 
-import com.example.olimpiadas.dto.RegisterDto;
-import com.example.olimpiadas.entities.Juez;
+import com.example.olimpiadas.dto.RegistroDto;
+import com.example.olimpiadas.exceptions.InvalidTypeException;
 import com.example.olimpiadas.mapper.PersonalMapper;
 import com.example.olimpiadas.repository.AdministradorRepository;
 import com.example.olimpiadas.repository.JuezRepository;
@@ -21,7 +21,7 @@ public class PersonalServiceImpl implements PersonalService {
     private final PeriodistaRepository periodistaRepository;
     private final ParticipanteRepository participanteRepository;
 
-    private PersonalMapper mapper = PersonalMapper.INSTANCE;
+    private final PersonalMapper mapper = PersonalMapper.INSTANCE;
 
     public PersonalServiceImpl(AdministradorRepository administradorRepository, JuezRepository juezRepository, PeriodistaRepository periodistaRepository, ParticipanteRepository participanteRepository) {
         this.administradorRepository = administradorRepository;
@@ -31,38 +31,46 @@ public class PersonalServiceImpl implements PersonalService {
     }
 
     @Override
-    public void registerPersonal(RegisterDto registerDto) {
+    public Long registerPersonal(RegistroDto registroDto) throws InvalidTypeException {
 
-        switch (registerDto.getType()){
-            case ADMIN -> createEntityAdministrador(registerDto);
-
-            case JUEZ -> createEntityJuez(registerDto);
-
-            case PARTICIPANTE -> createEntityParticipante(registerDto);
-
-            case PERIODISTA -> createEntityPeriodista(registerDto);
-
+        switch (registroDto.getType()){
+            case ADMIN -> {
+                return createEntityAdministrador(registroDto);
+            }
+            case JUEZ -> {
+                return createEntityJuez(registroDto);
+            }
+            case PARTICIPANTE -> {
+                return createEntityParticipante(registroDto);
+            }
+            case PERIODISTA -> {
+                return createEntityPeriodista(registroDto);
+            }
+            default -> throw new InvalidTypeException();
         }
-
     }
 
-    private void createEntityJuez(RegisterDto registerDto){
-
-        Juez juez = mapper.registerDtoToJuez(registerDto);
-
-        juezRepository.findAll();
+    private Long createEntityJuez(RegistroDto registroDto){
+        return juezRepository.save(
+                mapper.registerDtoToJuez(registroDto)
+        ).getId();
     }
 
-    private void createEntityAdministrador(RegisterDto registerDto){
-
-        //administradorRepository.save();
+    private Long createEntityAdministrador(RegistroDto registroDto){
+        return administradorRepository.save(
+                mapper.registerDtoToAdministrador(registroDto)
+        ).getId();
     }
 
-    private void createEntityParticipante(RegisterDto registerDto){
-
+    private Long createEntityParticipante(RegistroDto registroDto){
+        return participanteRepository.save(
+                mapper.registerDtoToParticipante(registroDto)
+        ).getId();
     }
 
-    private void createEntityPeriodista(RegisterDto registerDto){
-
+    private Long createEntityPeriodista(RegistroDto registroDto){
+        return periodistaRepository.save(
+                mapper.registerDtoToPeriodista(registroDto)
+        ).getId();
     }
 }

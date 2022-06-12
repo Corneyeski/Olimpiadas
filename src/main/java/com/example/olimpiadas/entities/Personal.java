@@ -1,11 +1,14 @@
 package com.example.olimpiadas.entities;
 
-import com.example.olimpiadas.dto.RegisterDto;
-
-import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @MappedSuperclass
+@Table(
+uniqueConstraints = {
+        @UniqueConstraint(columnNames = "nombre")
+})
 public class Personal {
     private String nombre;
     private String apellidos;

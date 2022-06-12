@@ -1,6 +1,8 @@
 package com.example.olimpiadas.rest;
 
-import com.example.olimpiadas.dto.RegisterDto;
+import com.example.olimpiadas.dto.PuntuarDto;
+import com.example.olimpiadas.dto.RegistroDto;
+import com.example.olimpiadas.exceptions.InvalidTypeException;
 import com.example.olimpiadas.service.PersonalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,8 +21,12 @@ public class PersonalController {
 
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
-    public void register(@RequestBody RegisterDto registerDto){
-        personalService.registerPersonal(registerDto);
+    public Long register(@RequestBody RegistroDto registroDto) throws InvalidTypeException {
+        return personalService.registerPersonal(registroDto);
     }
 
+    @PutMapping("/puntuacion/{id}")
+    public void giveScore(@PathVariable Long id, @RequestBody PuntuarDto puntuarDto){
+
+    }
 }
