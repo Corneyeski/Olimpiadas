@@ -1,5 +1,7 @@
 package com.example.olimpiadas.entities;
 
+import com.example.olimpiadas.dto.RegisterDto;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -7,6 +9,30 @@ import javax.persistence.Id;
 public class Periodista extends Personal {
 
     private Long id;
+    private String empresa;
+
+    public Periodista(String nombre, String apellidos, String dni, String password, Long id, String empresa) {
+        super(nombre, apellidos, dni, password);
+        this.id = id;
+        this.empresa = empresa;
+    }
+
+    public Periodista(String nombre, String apellidos, String dni, Long id, String empresa) {
+        super(nombre, apellidos, dni);
+        this.id = id;
+        this.empresa = empresa;
+    }
+
+    public Periodista(Long id, String empresa) {
+        this.id = id;
+        this.empresa = empresa;
+    }
+    public Periodista(RegisterDto registerDto){
+        super(registerDto.getNombre(), registerDto.getApellidos(), registerDto.getDni(), registerDto.getPassword());
+        this.empresa = registerDto.getEmpresa();
+    }
+
+    public Periodista() {}
 
     public void setId(Long id) {
         this.id = id;
@@ -15,5 +41,13 @@ public class Periodista extends Personal {
     @Id
     public Long getId() {
         return id;
+    }
+
+    public String getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(String empresa) {
+        this.empresa = empresa;
     }
 }
