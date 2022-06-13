@@ -1,5 +1,7 @@
 package com.example.olimpiadas.dto;
 
+import com.example.olimpiadas.enums.TypePersonal;
+
 import java.time.LocalDate;
 
 public class RegistroDto {
